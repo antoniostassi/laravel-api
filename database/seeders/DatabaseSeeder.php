@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            GenerationSeeder::class,
             PokemonSeeder::class, // db seed
         ]);
     }
