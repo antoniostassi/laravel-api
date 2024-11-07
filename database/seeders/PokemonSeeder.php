@@ -42,7 +42,7 @@ class PokemonSeeder extends Seeder
 
             $typeIds = [];
 
-            for ($k=0; $k < Type::count(); $k++) { 
+            for ($k=0; $k < Type::count(); $k++) { // It will be useful to generate random associations ( and select random types, never equals ).
                 $randomType = Type::inRandomOrder()->first();
                 if (!in_array($randomType->id, $typeIds)) {
                     $typeIds[] = $randomType->id;
