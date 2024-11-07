@@ -22,4 +22,8 @@ class Pokemon extends Model
     public function generation() {
         return $this->belongsTo(Generation::class); // One to Many
     }
+
+    public function types() {
+        return $this->belongsToMany(Type::class); // Many to Many
+    }
 }
