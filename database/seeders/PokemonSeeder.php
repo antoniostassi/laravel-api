@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-use App\Models\{Pokemon, Generation};
+use App\Models\{Pokemon, Generation, Type};
 
 class PokemonSeeder extends Seeder
 {
@@ -38,7 +38,21 @@ class PokemonSeeder extends Seeder
                 'sex' => $sexs[$randomSexsIndex],
                 'generation_id' => $randomGeneration->id,
             ]);
+
+
+            $typeIds = [];
+
+            for ($k=0; $k < Type::count(); $k++) { 
+                $randomType = Type::inRandomOrder()->first();
+                if (!in_array($randomType->id, $typeIds)) {
+                    $typeIds[] = $randomType->id;
+                }
+            }
+
+            // chiamata alla funzione types() del model Pokemon
+            $pokemon->types()->sync($typeIds); // Crea le associazioni all'interno della tabella Pivot.
         };
+
 
     }
 }
