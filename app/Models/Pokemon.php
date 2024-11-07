@@ -19,4 +19,7 @@ class Pokemon extends Model
         'generation_id'
     ];
 
+    public function generation() {
+        return $this->belongsTo(Generation::class); // One to Many
+    }
 }
