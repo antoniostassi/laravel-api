@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pokemon_type', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('pokemon_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('type_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreignId('pokemon_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('type_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary([ // Questo serve ad evitare che si crei una coppia identica di chiavi.
                 'pokemon_id',
                 'type_id'
             ]); 
-            $table->timestamps();
         });
     }
 
