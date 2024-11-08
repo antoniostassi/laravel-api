@@ -1,0 +1,262 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel",
+        "description": "Documentation for the Application API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Laravel Server #1"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/pokemon": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "pokemon"
+                ]
+            }
+        },
+        "/pokemon/{pokemon}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "pokemon",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "pokemon"
+                ]
+            }
+        }
+    },
+    "tags": [],
+    "components": {
+        "schemas": {
+            "Generation": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1445129000
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(68)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "description": "integer",
+                        "nullable": false,
+                        "example": 1137362301
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "year"
+                ]
+            },
+            "Pokemon": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1094038809
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(128)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "picture": {
+                        "type": "string",
+                        "description": "string(1024)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description": "smallint",
+                        "nullable": true,
+                        "example": 1255159506
+                    },
+                    "height": {
+                        "type": "integer",
+                        "description": "smallint",
+                        "nullable": true,
+                        "example": 1176559424
+                    },
+                    "sex": {
+                        "type": "string",
+                        "description": "string(1)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "generation_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1728483925
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "sex"
+                ]
+            },
+            "Type": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1332080109
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(68)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "color": {
+                        "type": "string",
+                        "description": "string(68)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "color"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {}
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
