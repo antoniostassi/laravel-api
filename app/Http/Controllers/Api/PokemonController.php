@@ -13,7 +13,14 @@ use App\Models\Pokemon;
 class PokemonController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List of pokemons
+     *
+     * Get list of pokemons in paginated way ( 10x page)
+     *
+     * @Response(
+     *    code: 200
+     *    ref: P(Pokemon)
+     * )
      */
     public function index()
     {
@@ -25,12 +32,20 @@ class PokemonController extends Controller
         
     }
 
+    
     /**
-     * Display the specified resource.
+     * Get a specified Pokemon
+     *
+     * Get a specified Pokémon by his ID
+     *
+     * @Response(
+     *    code: 200
+     *    ref: Pokemon
+     * )
      */
     public function show(string $id)
     {
-        //
+
         $pokemon = Pokemon::with('generation', 'types')
         ->where('id', $id)
         ->first();

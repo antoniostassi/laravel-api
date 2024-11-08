@@ -37,12 +37,82 @@
         },
         "/pokemon": {
             "get": {
-                "summary": "Display a listing of the resource.",
-                "description": "",
+                "summary": "List of pokemons",
+                "description": "Get list of pokemons in paginated way ( 10x page)",
                 "deprecated": false,
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "current_page",
+                                        "data",
+                                        "first_page_url",
+                                        "last_page",
+                                        "last_page_url",
+                                        "path",
+                                        "per_page",
+                                        "total"
+                                    ],
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 2
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "$ref": "Post"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/pokemon?page=1"
+                                        },
+                                        "from": {
+                                            "type": "integer",
+                                            "example": 16
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/pokemon?page=10"
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/pokemon?page=3"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/pokemon"
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 15
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8000/api/pokemon?page=1"
+                                        },
+                                        "to": {
+                                            "type": "integer",
+                                            "example": 30
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 150
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "(Unauthorized) Invalid or missing Access Token"
@@ -55,7 +125,7 @@
         },
         "/pokemon/{pokemon}": {
             "get": {
-                "summary": "Display the specified resource.",
+                "summary": "",
                 "description": "",
                 "deprecated": false,
                 "responses": {
@@ -94,7 +164,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1445129000
+                        "example": 1532260373
                     },
                     "name": {
                         "type": "string",
@@ -106,7 +176,7 @@
                         "type": "integer",
                         "description": "integer",
                         "nullable": false,
-                        "example": 1137362301
+                        "example": 1983268045
                     },
                     "created_at": {
                         "type": "string",
@@ -137,7 +207,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1094038809
+                        "example": 1221685985
                     },
                     "name": {
                         "type": "string",
@@ -161,13 +231,13 @@
                         "type": "integer",
                         "description": "smallint",
                         "nullable": true,
-                        "example": 1255159506
+                        "example": 1813954612
                     },
                     "height": {
                         "type": "integer",
                         "description": "smallint",
                         "nullable": true,
-                        "example": 1176559424
+                        "example": 1315592552
                     },
                     "sex": {
                         "type": "string",
@@ -194,7 +264,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": true,
-                        "example": 1728483925
+                        "example": 1293368533
                     }
                 },
                 "required": [
@@ -211,7 +281,7 @@
                         "format": "int64",
                         "description": "bigint",
                         "nullable": false,
-                        "example": 1332080109
+                        "example": 1713073912
                     },
                     "name": {
                         "type": "string",
